@@ -1,43 +1,50 @@
-const { nums, words } = require("./data/data.js");
-import util from "util";
+//const { nums, words } = require("./data/data.js");
 
-//create a Class node.
-class Node {
-    constructor(data){
-        this.data = data;
-        this.next = null;
-    }
-}
+const words = [
+    "the",
+    "quick",
+    "brown",
+    "fox",
+    "jumps",
+    "over",
+    "the",
+    "lazy",
+    "dog",
+  ];
 
-//here is a class Linked list
-//insert at beginning 
-//insert at location
-//insert at end
-//get the size
-//delete at index
-//remove element 
-//get the index of element
-//is empty
-//print the list
-class LinkedList {
-    constructor(head = null){
-        this.head = head;
+  class Node {
+    constructor(data) {
+      this.data = data;
+      this.next = null;
     }
-    insertBeginning(){
+  }
+//"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy","dog",
+  class LinkedList {
+    constructor(head = null) {
+      this.head = head;
+    }
+    insertBeginning() {}
+    insertAt() {}
+    insertAtEnd() {}
+    size() {}
+    delete() {}
+    getFirst() {}
+    getLast() {}
+    search() {}
+    getKth() {}
+    getKthToLast() {}
+    isEmpty() {}
+    clear() {}
+    toArray() {}
+    containsDuplicates() {}
+  }
+  
+  let list = new LinkedList();
+  for (let word of words) {
+    list.insertBeginning(word);
+  }
 
-    }
-    insertEnd(){
-
-    }
-    insertAt(){
-
-    }
-    size(){
-
-    }
-    delete(){
-
-    }
-}
+  //list.size();
+  //console.log(list.getLast());
 
 // https://www.codewars.com/kata/55be95786abade3c71000079/train/javascript
