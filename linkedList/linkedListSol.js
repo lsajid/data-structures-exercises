@@ -78,38 +78,101 @@ class LinkedList {
   //"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy","dog",
   getLast() {
     //console.log("hello");
-    if(!this.head){
-        return null;
+    if (!this.head) {
+      return null;
     }
     let temp = this.head;
     //move through the list? How?
     //while loop
-        //move the head pointer down all the way till the .next property is null
+    //move the head pointer down all the way till the .next property is null
     //
     //return the node that has .next property of null (the tail)
-    while(temp){
-        console.log(temp);
-        console.log(temp.next)
-        if(!temp.next){
-            return temp;
-        }
-        temp = temp.next;
-        console.log("next",temp)
-        if(temp.next === null) console.log(temp.data)
+    while (temp) {
+      if (!temp.next) {
+        return temp;
+      }
+      temp = temp.next;
+      if (temp.next === null) return temp;
     }
   }
-  search() {}
-  getKth() {}
-  getKthToLast() {}
-  isEmpty() {}
-  clear() {}
-  toArray() {}
-  containsDuplicates() {}
+  search(key) {
+    if (!this.head) return null;
+    let temp = this.head;
+    let searchedFor = null;
+    while (temp) {
+      if (temp.data === key) {
+        searchedFor = temp;
+      }
+      temp = temp.next;
+    }
+    return searchedFor;
+  }
+  getKth(num) {
+    let temp = this.head;
+    let count = 0;
+    let kthNode = null;
+    while (temp) {
+      count++;
+      if (count === num) {
+        kthNode = temp;
+      }
+      temp = temp.next;
+    }
+    return kthNode;
+  }
+  getKthToLast(num) {
+    let kthToLastNum = this.size() - num;
+    let kthToLastNode = null;
+    let count = 0;
+    let temp = this.head;
+    while (temp) {
+      count++;
+      if (kthToLastNum === count) {
+        kthToLastNode = temp;
+      }
+      temp = temp.next;
+    }
+    return kthToLastNode;
+  }
+  isEmpty() {
+    if (this.head === null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  clear() {
+    this.head.next = null;
+    this.head = null;
+  }
+  toArray() {
+    let array = [];
+    let temp = this.head;
+    while(temp){
+      array.push(temp.data);
+      temp = temp.next;
+    }
+    return array;
+  }
+  containsDuplicates() {
+    let temp = this.head;
+    let object = {};
+    while(temp){
+      object[temp.data] = (object[temp.data] || 0) + 1;
+      temp = temp.next;
+    }
+    for(let key in object){
+      if(object[key] > 1){ 
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 let list = new LinkedList();
 for (let word of words) {
   list.insertBeginning(word);
 }
-list.size();
-console.log(list.getLast());
+//list.size();
+//console.log(list.getLast());
